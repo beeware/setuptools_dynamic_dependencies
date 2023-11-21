@@ -1,0 +1,8 @@
+include .pre-commit-config.yaml
+include AUTHORS
+include CHANGELOG.md
+include CONTRIBUTING.md
+include LICENSE
+include README.md
+include setuptools_dynamic_dependencies.py
+include tox.ini

@@ -1,0 +1,66 @@
+[build-system]
+requires = ["setuptools==66.1.1", "setuptools_scm[toml]==7.0.5"]
+build-backend = "setuptools.build_meta"
+
+[project]
+dynamic = ["version"]
+name = "setuptools_dynamic_dependencies"
+description = "A setuptools plugin that allows for dependencies that are dependent on the package's version number."
+readme = "README.md"
+requires-python = ">= 3.8"
+license.file = "LICENSE"
+authors = [
+    {name="Russell Keith-Magee", email="russell@keith-magee.com"},
+]
+maintainers = [
+    {name="Russell Keith-Magee", email="russell@keith-magee.com"},
+]
+keywords = [
+    "setuptools",
+    "dynamic",
+    "dependencies",
+    "optional-dependencies",
+    "install_requires",
+    "extras_require",
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: BSD License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: System :: Software Distribution",
+    "Topic :: Software Development",
+    "Topic :: Utilities",
+]
+dependencies = [
+    "setuptools >= 66.0",
+    "setuptools_scm[toml] >= 7.0",
+    "tomli >= 2.0, < 3.0; python_version <= '3.10'"
+]
+
+[project.urls]
+Project = "https://github.com/beeware/setuptools_dynamic_dependencies"
+Funding = "https://beeware.org/contributing/membership/"
+Tracker = "dependencies beeware/setuptools_dynamic_dependencies/issues"
+Source = "https://github.com/beeware/setuptools_dynamic_dependencies"
+
+[project.entry-points."setuptools.finalize_distribution_options"]
+setuptools_dynamic_dependencies= "setuptools_dynamic_dependencies:finalize_dependencies"
+
+[tool.setuptools]
+py-modules = ["setuptools_dynamic_dependencies"]
+
+[tool.setuptools_scm]
+# An empty table is needed to enable setuptools_scm
+
+[tool.isort]
+profile = "black"
+split_on_trailing_comma = true
+combine_as_imports = true

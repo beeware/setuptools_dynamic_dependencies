@@ -11,15 +11,15 @@ def finalize_dependencies(dist):
         pyproject = tomllib.loads(f.read())
 
     # Dynamic configuration is in [tool.setuptools_dynamic_dependencies]
-    dynamic_requires = pyproject.get("tool", {}).get("setuptools_dynamic_dependencies", {})
+    dynamic_requires = pyproject.get("tool", {}).get(
+        "setuptools_dynamic_dependencies", {}
+    )
 
     # [tool.setuptools_dynamic_dependencies]
     # dependencies = [
     #     "dynamic-package == {version}"
     # ]
-    substitutions = {
-        "version": dist.metadata.version
-    }
+    substitutions = {"version": dist.metadata.version}
     dist.install_requires = [
         requirement.format(**substitutions)
         for requirement in dynamic_requires.get("dependencies", [])
@@ -30,11 +30,10 @@ def finalize_dependencies(dist):
     #     "dynamic-package == {version}"
     # ]
     dist.extras_require = {
-        extra: [
-            requirement.format(**substitutions)
-            for requirement in requirements
-        ]
-        for extra, requirements in dynamic_requires.get("optional-dependencies", {}).items()
+        extra: [requirement.format(**substitutions) for requirement in requirements]
+        for extra, requirements in dynamic_requires.get(
+            "optional-dependencies", {}
+        ).items()
     }
 
 

@@ -64,7 +64,7 @@ dev = [
     "build == 1.2.2.post1",
     "pre-commit == 4.1.0",
     "setuptools_scm == 8.2.0",
-    "tox == 4.24.1",
+    "tox == 4.24.2",
     "twine == 6.1.0",
     "wheel == 0.45.1",
 ]

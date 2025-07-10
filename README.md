@@ -55,7 +55,7 @@ define dynamic optional requirements:
 `setuptools_dynamic_dependencies` is part of the [BeeWare suite](http://beeware.org). You
 can talk to the community through:
 
-- [@pybeeware on Twitter](https://twitter.com/pybeeware)
+- [@beeware@fosstodon.org on Mastodon](https://fosstodon.org/@beeware)
 - [Discord](https://beeware.org/bee/chat/)
 
 We foster a welcoming and respectful community as described in our [BeeWare
@@ -65,6 +65,6 @@ Community Code of Conduct](http://beeware.org/community/behavior/).
 
 If you experience problems with `setuptools_dynamic_dependencies`, [log them on
 GitHub](https://github.com/beeware/setuptools_dynamic_dependencies/issues). If you want
-to contribute code, please [fork the
-code](https://github.com/beeware/setuptools_dynamic_dependencies) and [submit a pull
+to contribute, please [fork the
+project](https://github.com/beeware/setuptools_dynamic_dependencies) and [submit a pull
 request](https://github.com/beeware/setuptools_dynamic_dependencies/pulls).

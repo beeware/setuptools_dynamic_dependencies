@@ -63,7 +63,7 @@ setuptools_dynamic_dependencies= "setuptools_dynamic_dependencies:finalize_depen
 dev = [
     "build == 1.3.0",
     "pre-commit == 4.3.0",
-    "setuptools_scm == 9.2.0",
+    "setuptools_scm == 9.2.1",
     "tox == 4.30.3",
     "twine == 6.2.0",
     "wheel == 0.45.1",

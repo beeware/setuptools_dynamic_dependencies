@@ -61,14 +61,9 @@ pre-commit = [
     "pre-commit == 4.3.0",
 ]
 
-tox-uv = [
-    "tox-uv == 1.28.0",
-]
-
 dev = [
     "setuptools_scm == 9.2.1",
     {include-group = "pre-commit"},
-    {include-group = "tox-uv"},
 ]
 
 [tool.setuptools]

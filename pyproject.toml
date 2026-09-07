@@ -1,7 +1,7 @@
 [build-system]
 requires = [
-    "setuptools==83.0.0",
-    "setuptools_scm==10.2.1",
+    "setuptools==84.0.0",
+    "setuptools_scm==10.2.3",
 ]
 build-backend = "setuptools.build_meta"
 
@@ -58,7 +58,7 @@ setuptools_dynamic_dependencies= "setuptools_dynamic_dependencies:finalize_depen
 
 [dependency-groups]
 pre-commit = [
-    "pre-commit == 4.6.1",
+    "pre-commit == 4.6.2",
 ]
 
 dev = [

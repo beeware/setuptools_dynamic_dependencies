@@ -59,7 +59,7 @@ setuptools_dynamic_dependencies= "setuptools_dynamic_dependencies:finalize_depen
 
 [dependency-groups]
 pre-commit = [
-    "pre-commit == 4.6.2",
+    "pre-commit == 4.7.0",
 ]
 
 dev = [

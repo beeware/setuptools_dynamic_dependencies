@@ -1,0 +1,49 @@
+name: CI
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_call:
+    inputs:
+      attest-package:
+        description: "Create GitHub provenance attestation for the package."
+        default: "false"
+        type: string
+    outputs:
+      artifact-basename:
+        description: "Base name of the uploaded artifacts; use for artifact retrieval."
+        value: ${{ jobs.package.outputs.artifact-basename }}
+
+# Cancel active CI runs for a PR before starting another run
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+defaults:
+  run:
+    shell: bash  # https://github.com/beeware/briefcase/pull/912
+
+env:
+  FORCE_COLOR: "1"
+
+jobs:
+  pre-commit:
+    name: Pre-commit checks
+    uses: beeware/.github/.github/workflows/pre-commit-run.yml@main
+    with:
+      pre-commit-source: "--group pre-commit"
+
+  package:
+    name: Package setuptools_dynamic_requires
+    needs: [ pre-commit ]
+    permissions:
+      id-token: write
+      attestations: write
+      contents: read
+    uses: beeware/.github/.github/workflows/python-package-create.yml@main
+    with:
+      attest: ${{ inputs.attest-package }}

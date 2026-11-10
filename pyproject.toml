@@ -10,7 +10,7 @@ dynamic = ["version"]
 name = "setuptools_dynamic_dependencies"
 description = "A setuptools plugin that allows for dependencies that are dependent on the package's version number."
 readme = "README.md"
-requires-python = ">= 3.10"
+requires-python = ">= 3.11"
 license.file = "LICENSE"
 authors = [
     {name="Russell Keith-Magee", email="russell@keith-magee.com"},
@@ -31,11 +31,12 @@ classifiers = [
     "Intended Audience :: Developers",
     "License :: OSI Approved :: BSD License",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
     "Programming Language :: Python :: 3.14",
+    "Programming Language :: Python :: 3.15",
+    "Programming Language :: Python :: 3.16",
     "Programming Language :: Python :: 3 :: Only",
     "Topic :: Software Development :: Libraries",
     "Topic :: System :: Software Distribution",
@@ -65,14 +66,62 @@ dev = [
     "setuptools_scm == 10.3.4",
     {include-group = "pre-commit"},
 ]
+[tool.ruff.lint]
+# In addition to the default rules, these additional rules will be used:
+extend-select = [
+    "E",      # pycodestyle
+    "W",      # pycodestyle
+    "F",      # pyflakes
+    "UP",     # pyupgrade
+    "B",      # flake8-bugbear
+    "YTT",    # flake8-2020
+    "ASYNC",  # flake8-async
+    "C4",     # flake8-comprehensions
+    "I",      # isort
+    # The SIM rules are *very* opinionated, and don't necessarily make for better code.
+    # They may be worth occasionally turning on just to see if something could actually
+    # use improvement.
+    # "SIM",    # flake8-simplify
+]
+
+[tool.ruff.lint.isort]
+combine-as-imports = true
+
+[tool.rumdl]
+flavor = "mkdocs"
+include = ["**/*.md"]
+exclude = [
+    "comment.md",
+    "CODE_OF_CONDUCT.md",
+    "examples/example.podium/slides.md",
+    "changes/*.md",
+]
+respect-gitignore = true
+
+# Disable rules:
+# MD014: Forces commands in codeblocks to show output
+# MD033: No inline HTML
+disable = [
+    "MD014",
+    "MD033",
+]
+
+[tool.rumdl.per-file-ignores]
+"docs/en/reference/index.md" = ["MD022", "MD025"]
+
+[tool.rumdl.MD013]  # Line length
+line_length = 999999
+reflow = true
+reflow_mode = "normalize"
+
+[tool.rumdl.MD026]  # Remove punctuation at the end of headings
+punctuation = ",;:"
+
+[tool.rumdl.MD061]  # Fail on certain strings.
+#terms = ["TODO"]
 
 [tool.setuptools]
 py-modules = ["setuptools_dynamic_dependencies"]
 
 [tool.setuptools_scm]
 # An empty table is needed to enable setuptools_scm
-
-[tool.isort]
-profile = "black"
-split_on_trailing_comma = true
-combine_as_imports = true
